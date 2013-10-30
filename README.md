@@ -33,7 +33,9 @@ You will have to provide a file containing the terms to hide.
 Usage
 -----
 
-This example scrambles the ssh logins and hides the names of your users:
+The best option to have an idea is to type `scrambleflat --help`.
+
+This example scrambles the last system events and hides the names of your users:
 
 ```bash
 # 1. create a list of terms to hide
@@ -41,4 +43,3 @@ cut -d ':' -f 1 /etc/passwd > my_users
 # 2. scramble the logins on your machine
 tail /var/log/syslog | scrambleflat --terms my_users > syslog.crambled
 ```
-
