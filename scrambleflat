@@ -19,6 +19,8 @@ Scramble a file
 
 = Notes:
 
+Website: https://github.com/samyboy/scrambleflat
+
 This file tends to be PEP-8 compliant. Use these commands to be
 proud of your work:
 
@@ -95,7 +97,7 @@ def parse_arguments():
                      {"prog": "%(prog)s", "version": __version__, \
                      "author": __author__}
 
-    p = argparse.ArgumentParser(description="Description",
+    p = argparse.ArgumentParser(description="Scrambles a flat file",
         formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('-V', '--version', action='version',
                    help="shows program version", version=version_string)
