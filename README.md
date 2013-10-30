@@ -1,5 +1,7 @@
-scramble
-========
+scrambleflat
+===========
+
+Scrambles a flat file
 
 This Linux script gives you the ability to hide sensitive data from your files
 before giving them away.
@@ -18,13 +20,13 @@ Installation
 
 I have nothing better yet
 
-    sudo cp scramble /usr/local/bin
+    sudo cp scrambleflat /usr/local/bin
 
 How it works
 ------------
 
-`scramble` takes the standard input, scrambles the data, and gives the result on the
-standard output.
+`scrambleflat` takes the standard input, scrambles the data, and gives the
+result on the standard output.
 You will have to provide a file containing the terms to hide.
 
 Usage
@@ -33,9 +35,9 @@ Usage
 This example scrambles the ssh logins and hides the names of your users:
 
 ```bash
-# create a list of terms to hide
+# 1. create a list of terms to hide
 cut -d ':' -f 1 /etc/passwd > my_users
-# scramble the logins on your machine
-tail /var/log/syslog | ./scramble --terms my_users > syslog.crambled
+# 2. scramble the logins on your machine
+tail /var/log/syslog | scrambleflat --terms my_users > syslog.crambled
 ```
 
