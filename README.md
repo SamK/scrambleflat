@@ -20,7 +20,8 @@ Installation
 
 I have nothing better yet
 
-    sudo cp scrambleflat /usr/local/bin
+    wget https://raw.github.com/samyboy/scrambleflat/master/scrambleflat -O scrambleflat /usr/local/bin
+    chmod +x /usr/local/bin/scrambleflat
 
 How it works
 ------------
