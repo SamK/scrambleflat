@@ -3,7 +3,7 @@ scrambleflat
 
 Scrambles a flat file
 
-This Linux script gives you the ability to hide sensitive data from your files
+This Python script gives you the ability to hide sensitive data from your files
 before giving them away.
 
 A simple example would be a log file to send to someone but you don't want
