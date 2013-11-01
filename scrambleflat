@@ -148,10 +148,10 @@ def parse_arguments():
                    help="shows program version", version=version_string)
     p.add_argument('-i', '--infile', nargs='?', type=argparse.FileType('r'),
                    default=sys.stdin,
-                   help='the source file to scramble')
+                   help='the source file to scramble (default: standard input)')
     p.add_argument('-o', '--outfile', nargs='?', type=argparse.FileType('w'),
                    default=sys.stdout,
-                   help='the scrambled file')
+                   help='the scrambled file (default: standard output)')
     p.add_argument('-t', '--terms', nargs='+',
                    type=argparse.FileType('r'),
                    help='the file that contains all the terms that must be \
@@ -164,7 +164,7 @@ def parse_arguments():
     args = p.parse_args()
 
     if args.terms is None and args.regterms is None:
-       p.error("at least one of arguments -t/--terms or -r/--regterms are required")
+       p.error("input, option -t/--terms or -r/--regterms is required")
 
     return args
 
