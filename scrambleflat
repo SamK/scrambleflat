@@ -26,11 +26,11 @@ proud of your work:
 
 * using pep8:
 
-  pep8 --show-source --show-pep8 scramble
+  pep8 --show-source --show-pep8 scrambleflat
 
 * using pyling:
 
-  pylint --report=n scramble
+  pylint --report=n scrambleflat
 
 """
 
@@ -54,7 +54,7 @@ class Scrambler:
         self.make_transtable = False
         self.transtable = {}
 
-    def build_regexps(self, regtermsfiles = None):
+    def build_regexps(self, regtermsfiles=None):
         """Create a list of regular expressions
         """
         for fichier in regtermsfiles:
@@ -63,11 +63,10 @@ class Scrambler:
             for line in fichier:
                 line = line.strip()
                 if line != '' and not line.startswith('#'):
-                    self.regterms[filename + str(num)] = line # WTF .rstrip('\n')
+                    self.regterms[filename + str(num)] = line
                 num += 1
 
-
-    def build_dictionnary(self, termsfiles = None):
+    def build_dictionnary(self, termsfiles=None):
         """Creates a dictionnary of terms to hide
         """
         for fichier in termsfiles:
@@ -92,7 +91,7 @@ class Scrambler:
             match = False
             t1 = 'osef'
             for s, r in self.dictionnary.items():
-                """search in dictionnaries"""
+                #search in dictionnaries
                 if strng[i:len(s) + i] == s:
                     buff.append(r)
                     t1 = strng[i:len(s) + i]
@@ -101,13 +100,14 @@ class Scrambler:
                     t2 = r
                     break
             for s, r in self.regterms.items():
-                """search in regexps"""
+                #search in regexps
                 pattern = '^' + r
                 regmatch = re.search(pattern, strng[i:])
                 if regmatch:
                     match_len = regmatch.end()
-                    match_str = strng[i:i+match_len]
-                    replacematch = "reg-" + s + "-" + str(len(self.dictionnary))
+                    match_str = strng[i:i + match_len]
+                    replacematch = "reg-" + s + "-" + \
+                                   str(len(self.dictionnary))
                     buff.append(replacematch)
                     i = i + match_len
                     match = True
@@ -126,13 +126,13 @@ class Scrambler:
                     if not t1 in self.transtable:
                         self.transtable[t1] = t2
 
-
         return ''.join(buff)
 
     def scramble(self, line):
         """do the scramble for one line
         """
         return self.strtr(line)
+
 
 def parse_arguments():
     """Try to parse the command line arguments given by the user"""
@@ -148,7 +148,8 @@ def parse_arguments():
                    help="shows program version", version=version_string)
     p.add_argument('-i', '--infile', nargs='?', type=argparse.FileType('r'),
                    default=sys.stdin,
-                   help='the source file to scramble (default: standard input)')
+                   help='the source file to scramble ' \
+                   '(default: standard input)')
     p.add_argument('-o', '--outfile', nargs='?', type=argparse.FileType('w'),
                    default=sys.stdout,
                    help='the scrambled file (default: standard output)')
@@ -164,7 +165,7 @@ def parse_arguments():
     args = p.parse_args()
 
     if args.terms is None and args.regterms is None:
-       p.error("input, option -t/--terms or -r/--regterms is required")
+        p.error("input, option -t/--terms or -r/--regterms is required")
 
     return args
 
@@ -185,10 +186,8 @@ def main():
 
     scrambler.make_transtable = make_transtable
 
-    i=1
     for line in args.infile:
         args.outfile.write(scrambler.scramble(line))
-        i+=1
 
     """
     print "transtable:"
