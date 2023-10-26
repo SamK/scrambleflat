@@ -18,22 +18,21 @@ Prerequisites
 Installation
 ------------
 
-I have nothing better yet
-
-    wget https://raw.github.com/samyboy/scrambleflat/master/scrambleflat -O scrambleflat /usr/local/bin
-    chmod +x /usr/local/bin/scrambleflat
+* Clone this repo
+* `python setup.py install_lib`
+* `python setup.py install_scripts`
 
 How it works
 ------------
 
-`scrambleflat` takes the standard input, scrambles the data, and gives the
+`scrambleflat.py` takes the standard input, scrambles the data, and gives the
 result on the standard output.
 You will have to provide a file containing the terms to hide.
 
 Usage
 -----
 
-The best option to have an idea is to type `scrambleflat --help`.
+The best option to have an idea is to type `scrambleflat.py --help`.
 
 This example scrambles the last system events and anonymyzes the local users:
 
